@@ -57,6 +57,7 @@
     <Content Include="SCM\templates\SCM\home.html" />
     <Content Include="SCM\templates\SCM\login.html" />
     <Content Include="SCM\templates\SCM\navbar.html" />
+    <Content Include="SCM\templates\SCM\pollution.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SCM\static\" />
