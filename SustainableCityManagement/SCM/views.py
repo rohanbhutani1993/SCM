@@ -11,14 +11,17 @@ def login_view(request):
 
     return render(request, "login.html", context)
 
-def validate_login_view(request):
+def ValidateLoginView(request):
     userName = request.POST['userName']
     password = request.POST['password']
     userLoginDetails = UserDetails.objects.get()
     if userLoginDetails.userName == userName and userLoginDetails.Password == password:
-               return render(request,"home.html",{})
+               return render(request,"dashboard.html",{})
     else:
         return HttpResponse("Invalid username or password.")
+
+def DisplayMapView(request):
+    return render(request,"home.html",{})
 
     
 

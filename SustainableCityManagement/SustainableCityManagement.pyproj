@@ -53,9 +53,10 @@
   <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="SCM\templates\SCM\base.html" />
+    <Content Include="SCM\templates\SCM\dashboard.html" />
     <Content Include="SCM\templates\SCM\home.html" />
     <Content Include="SCM\templates\SCM\login.html" />
-    <Content Include="SCM\static\login.css" />
+    <Content Include="SCM\templates\SCM\navbar.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SCM\static\" />
