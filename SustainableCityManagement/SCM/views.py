@@ -12,10 +12,13 @@ def login_view(request):
     return render(request, "login.html", context)
 
 def validate_login_view(request):
-    form = UserLoginForm(request.POST or None)
-    userName = form.cleaned_data
-
-    return render(request,"home.html",{})
+    userName = request.POST['userName']
+    password = request.POST['password']
+    userLoginDetails = UserDetails.objects.get()
+    if userLoginDetails.userName == userName and userLoginDetails.Password == password:
+               return render(request,"home.html",{})
+    else:
+        return HttpResponse("Invalid username or password.")
 
     
 

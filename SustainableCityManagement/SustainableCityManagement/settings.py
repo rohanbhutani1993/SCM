@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'SCM',
-        'HOST': 'mongodb+srv://scmMongo:mongodb@cluster0-r2ihg.mongodb.net/test?retryWrites=true&w=majority',
+        'HOST': 'mongodb+srv://scmMongo:mongodb@cluster0-r2ihg.mongodb.net/test?retryWrites=true&w=majority&ssl=true',
         'USER': 'scmMongo',
         'PASSWORD' : 'mongodb'
     }
