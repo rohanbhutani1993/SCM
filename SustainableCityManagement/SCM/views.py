@@ -24,6 +24,27 @@ def ValidateLoginView(request):
 def DisplayMapView(request):
     return render(request,"home.html",{})
 
+def DisplayDublinBusData(request):
+    #response=route_list(self,None)
+    response = requests.get('https://data.dublinked.ie/cgi-bin/rtpi/routelistinformation')
+    dublinbus=response.json()
+    dublinbus['results']
+    print( dublinbus['results'])
+    context = {
+        "data" : dublinbus['results']
+        }
+    #RTPI_API.route_list(operator= None):
+    return render(request,"dublinbus.html",{})
+
+def DisplayEventsData(request):
+    city="dublin"
+    response = requests.get('https://www.eventbriteapi.com/v3/events/search/?location.address='+city+'&location.within=10km&expand=venue&token=NL3IVYPNAYASG6QYJSMF')
+    events=response.json()
+    context = {
+        "data" : events['results']
+        }
+    return render(request,"event.html",{})
+
 
 def DisplayPollutionData(request):
     response = requests.get('http://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php')
