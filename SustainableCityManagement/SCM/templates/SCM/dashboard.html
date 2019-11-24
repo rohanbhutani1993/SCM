@@ -6,6 +6,12 @@
     <form method="get" action="{% url 'SCM:display-pollution' %}">
         <button class="btn" style="margin:5px; border:1px solid black">View pollution data</button>
     </form>
+    <form method="get" action="{% url 'SCM:display-dublinbus' %}">
+        <button class="btn" style="margin:5px; border:1px solid black">View Dublin Bus data</button>
+    </form>
+    <form method="get" action="{% url 'SCM:display-events' %}">
+        <button class="btn" style="margin:5px; border:1px solid black">View Events data</button>
+    </form>
      
 
 {% endblock %}
