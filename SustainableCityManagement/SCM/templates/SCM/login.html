@@ -1,18 +1,36 @@
 ﻿{% extends 'base.html' %}
 
 {% block content %}
-    <form method="post" action="{% url 'SCM:validate-login' %}" style="width:20%; display:inline-block; margin-right:-550px;margin-left:550px">
-        {% csrf_token %}
-        <div style="margin:5px;" class="form-group">
-            <label for="">Username</label>
-            {{form.userName}}
-        </div>
-        <div style="margin:5px;" class="form-group">
-            <label for="">Password</label>
-            {{form.password}}
-        </div>
-        <button class="btn btn-primary" style="margin:5px" name="btn_login">Sign in</button>
+    <div class="row" style="margin-top:115px">
+        <div class="col-4"></div>
+        <div class="col-4" style="border:2px solid black; background-color:lightgray">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h5>SCM Login</h5>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form method="post" action="{% url 'SCM:validate-login' %}">
+                        {% csrf_token %}
+                        <div style="margin:5px;" class="form-group">
+                            <label for="">Username</label>
+                            {{form.userName}}
+                        </div>
+                        <div style="margin:5px;" class="form-group">
+                            <label for="">Password</label>
+                            {{form.password}}
+                        </div>
+                        <button class="btn btn-primary" style="margin:5px" name="btn_login">Sign in</button>            
+                    </form>
+                </div>
+            </div>
             
-    </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    
 {% endblock %}
 
