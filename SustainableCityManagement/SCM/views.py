@@ -41,5 +41,23 @@ def DisplayPollutionData(request):
         }
     return render(request, "pollution.html", context)
 
+def DisplayDublinBusData(request):
+    response = requests.get('https://data.dublinked.ie/cgi-bin/rtpi/routelistinformation')
+    dublinbus=response.json()
+    
+    context = {
+        "data" : dublinbus['results']
+        }
+    return render(request,"BusRouteInfo.html",context)
+
+def DisplayEventsData(request):
+    city="dublin"
+    response = requests.get('https://www.eventbriteapi.com/v3/events/search/?location.address='+city+'&location.within=10km&expand=venue&token=NL3IVYPNAYASG6QYJSMF')
+    events=response.json()
+    context = {
+        "data" : events['events']
+        }
+    return render(request,"events.html",context)
+
     
 

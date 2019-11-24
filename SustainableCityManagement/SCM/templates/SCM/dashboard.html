@@ -1,10 +1,16 @@
 ﻿{% extends 'base.html' %}
 {% block content %}
-    <form method="get" action="{% url 'SCM:display-map' %}">
+    <form method="get" action="{% url 'SCM:traffic-data' %}">
         <button class="btn" style="margin:5px; border:1px solid black">View traffic map</button>
     </form>
-    <form method="get" action="{% url 'SCM:display-pollution' %}">
+    <form method="get" action="{% url 'SCM:pollution-data' %}">
         <button class="btn" style="margin:5px; border:1px solid black">View pollution data</button>
+    </form>
+    <form method="get" action="{% url 'SCM:bus-data' %}">
+        <button class="btn" style="margin:5px; border:1px solid black">View Dublin Bus data</button>
+    </form>
+    <form method="get" action="{% url 'SCM:event-data' %}">
+        <button class="btn" style="margin:5px; border:1px solid black">View events data</button>
     </form>
      
 

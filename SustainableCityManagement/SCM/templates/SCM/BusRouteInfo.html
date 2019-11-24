@@ -1,0 +1,18 @@
+﻿{% extends 'base.html '%}
+{% block content %}
+    <table style="margin:10px">
+        <tr>
+            <th>Operator</th>
+            <th>Operator Type</th>
+            <th>Route</th>
+        </tr>
+        {% for item in data %}
+            <tr>            
+                <td>{{item.operator}}</td>
+                <td>{{item.operatortype}}</td>
+                <td>{{item.route}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
