@@ -59,5 +59,13 @@ def DisplayEventsData(request):
         }
     return render(request,"events.html",context)
 
+def DisplayDublinBikesData(request):
+    response= requests.get(' https://api.jcdecaux.com/vls/v1/stations?apiKey=77cf7ab00377c7f4cc621765273db0e7daf18f82')
+    dublinbikes=response.json()
+    context = {
+        "data" : dublinbikes
+        }
+    return render(request,"dublinbikes.html",{})
+
     
 

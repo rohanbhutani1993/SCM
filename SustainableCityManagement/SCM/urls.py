@@ -5,7 +5,8 @@ from SCM.views import (
     DisplayMapView,
     DisplayPollutionData,
     DisplayDublinBusData,
-    DisplayEventsData
+    DisplayEventsData,
+    DisplayDublinBikesData
     )
 
 app_name = "SCM"
@@ -14,7 +15,8 @@ urlpatterns = [
     path('traffic/', DisplayMapView, name='traffic-data'),
     path('pollution/', DisplayPollutionData, name='pollution-data'),
     path('DublinBus/', DisplayDublinBusData, name='bus-data'),
-    path('events/', DisplayEventsData, name='event-data')
+    path('events/', DisplayEventsData, name='event-data'),
+    path('dublinbikes', DisplayDublinBikesData, name='display-dublinbikes'),
 
 
 ]
