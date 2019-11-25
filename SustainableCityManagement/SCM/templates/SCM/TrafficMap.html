@@ -1,34 +1,38 @@
-﻿
-<!doctype html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    {% block login_css %}
-    {% endblock %}
+    
+    <title>Traffic Layer</title>
     <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        }
-        button:hover {
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      button:hover {
         border: 1px solid white;
         }
     </style>
-    {% block static_file %}
-    {% endblock %}
   </head>
   <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Sustainable City Management</a>
         <form method="get" action="{% url 'SCM:pollution-data' %}">
             <button class="btn" style="color:white">Pollution data</button>
         </form>
         <form method="get" action="{% url 'SCM:bikes-data' %}">
             <button class="btn" style="color:white">Dublin Bikes data</button>
-        </form> 
+        </form>
         <form method="get" action="{% url 'SCM:traffic-data' %}">
             <button class="btn" style="color:white">Traffic map</button>
         </form>        
@@ -37,7 +41,7 @@
         </form>
         <form method="get" action="{% url 'SCM:event-data' %}">
             <button class="btn" style="color:white">Events data</button>
-        </form>            
+        </form>             
         <form method="get" action="{% url 'SCM:push-notification' %}">
             <button class="btn" style="color:white">
                 Send Notification
@@ -48,10 +52,49 @@
         </button>       
   
       </nav>
-      {% block content %}
-      {% endblock %}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <div style="margin:5px">
+	    <label for="lat">Latitude</label>
+	    <input type="text" class="form-control" style="width:140px" id="lat">
+      </div>
+      <div style="margin:5px">
+	    <label for="long">Longitude</label>
+	    <input type="text" class="form-control" style="width:140px" id="long">
+      </div>
+      <div style="margin:5px">
+	    <button type="submit" class="btn btn-primary" onclick="javascript:initMap()">View Map</button>
+      </div>
+      <div id="map"></div>
+
+      <script async defer>
+      function initMap() {
+          var lati = document.getElementById('lat').value
+          var long = document.getElementById('long').value
+
+          if (!lati && !long) {
+             var map = new google.maps.Map(document.getElementById('map'), {
+                 zoom: 13,
+                 center: { lat: parseFloat(lati), lng: parseFloat(long) }
+			});
+			var trafficLayer = new google.maps.TrafficLayer();
+			trafficLayer.setMap(map);
+          }
+          else {
+            var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 13,
+			center: {lat: 53.2734, lng: -7.77832031}
+			});
+			var trafficLayer = new google.maps.TrafficLayer();
+			trafficLayer.setMap(map);
+          }
+		
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlqp_xDwz-gGxa4BfprQ_cyl98Obgdc6w&callback=initMap">
+    </script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
   </body>
 </html>

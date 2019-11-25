@@ -18,12 +18,25 @@ def ValidateLoginView(request):
     password = request.POST['password']
     userLoginDetails = UserDetails.objects.filter(userName = userName, Password = password)
     if userLoginDetails:
-               return render(request,"dashboard.html",{})
+        response = requests.get('http://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php')
+        pollution = response.json()
+        dict1 = dict()
+        for i in range(0, len(pollution['aqihsummary'])):
+            if '_' in pollution['aqihsummary'][i]['aqih-region']:
+                region = pollution['aqihsummary'][i]['aqih-region'].split('_')[0] + " " + pollution['aqihsummary'][i]['aqih-region'].split('_')[1]
+            else:
+                region = pollution['aqihsummary'][i]['aqih-region']
+            dict1[region] = pollution['aqihsummary'][i]['aqih']
+        
+        context = {
+            "data" : dict1
+            }
+        return render(request, "pollution.html", context)    
     else:
         return HttpResponse("Invalid username or password.")
 
 def DisplayMapView(request):
-    return render(request,"home.html",{})
+    return render(request,"TrafficMap.html",{})
 
 
 def DisplayPollutionData(request):
@@ -63,8 +76,11 @@ def DisplayDublinBusData(request):
 def DisplayEventsData(request):
     city="dublin"
     response = requests.get('https://www.eventbriteapi.com/v3/events/search/?location.address='+city+'&location.within=10km&expand=venue&token=NL3IVYPNAYASG6QYJSMF')
-    events=response.json()
-    events['events']
+    event=response.json()
+
+    dict1 = dict()
+    for i in range(0, len(events)):
+        dict1[event['events'][i]['id']] = {'name' : event['events'][i]['name']['text']}
     abc = "jkewbhcjb"
     context = {
         "data" : events['events']
