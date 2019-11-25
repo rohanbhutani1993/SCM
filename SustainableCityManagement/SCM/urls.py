@@ -5,16 +5,20 @@ from SCM.views import (
     DisplayMapView,
     DisplayPollutionData,
     DisplayDublinBusData,
-    DisplayEventsData
+    DisplayEventsData,
+    DisplayDublinBikesData,
+    push_notify
     )
 
 app_name = "SCM"
 urlpatterns = [
-    path('home/', ValidateLoginView, name='validate-login'),
-    path('traffic/', DisplayMapView, name='traffic-data'),
-    path('pollution/', DisplayPollutionData, name='pollution-data'),
+    path('Home/', ValidateLoginView, name='validate-login'),
+    path('Traffic/', DisplayMapView, name='traffic-data'),
+    path('PollutionData/', DisplayPollutionData, name='pollution-data'),
     path('DublinBus/', DisplayDublinBusData, name='bus-data'),
-    path('events/', DisplayEventsData, name='event-data')
+    path('Events/', DisplayEventsData, name='event-data'),
+    path('DublinBikes/',DisplayDublinBikesData, name='bikes-data'),
+    path('PushNotification/', push_notify, name='push-notification')
 
 
 ]

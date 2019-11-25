@@ -1,22 +1,35 @@
 ﻿{% extends 'base.html' %}
+
 {% block content %}
     <table style="margin:10px">
         <tr>
-            <th>Operator</th>
-            <th>Operator Type</th>
-            <th>Route</th>
+            <th>Address</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Available Bike Stands</th>
+            <th>Available Bikes</th>
+            <th>Contract Name</th>
+            <th>Name</th>
+            <th>Number</th>        
+            <th>Status</th>
         </tr>
+        
         {% for item in data %}
-            <tr>            
-                <td>{{item.operator}}</td>
-                <td>{{item.operatortype}}</td>
-                <td>{{item.route}}</td>
+            <tr>
+                <td>{{item.address}}</td>
+                <td>{{item.position.lng}}</td>
+                <td>{{item.position.lat}}</td>
+                <td>{{item.available_bike_stands}}</td>
+                <td>{{item.available_bikes}}</td>
+                <td>{{item.contract_name}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.number}}</td>
+                <td>{{item.status}}</td>
             </tr>
         {% endfor %}
     </table>
-
-    {% if data.has_other_pages %}
-  <ul class="pagination">
+{% if data.has_other_pages %}
+  <ul class="pagination" style="border:1px solid black; margin:10px;">
     {% if data.has_previous %}
       <li><a href="?page={{ data.previous_page_number }}">&laquo;</a></li>
     {% else %}

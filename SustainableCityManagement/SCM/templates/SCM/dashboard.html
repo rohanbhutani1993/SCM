@@ -12,6 +12,12 @@
     <form method="get" action="{% url 'SCM:event-data' %}">
         <button class="btn" style="margin:5px; border:1px solid black">View events data</button>
     </form>
-     
-
+    <form method="get" action="{% url 'SCM:bikes-data' %}">
+        <button class="btn" style="margin:5px; border:1px solid black">View Dublin Bikes data</button>
+    </form>     
+    <form method="get" action="{% url 'SCM:push-notification' %}">
+        <button class="btn" style="margin:5px; border:1px solid black">
+            Send Notification
+        </button>
+    </form>
 {% endblock %}
