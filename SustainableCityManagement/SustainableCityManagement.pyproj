@@ -53,9 +53,9 @@
   <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="SCM\templates\SCM\base.html" />
+    <Content Include="SCM\templates\SCM\BusRouteInfo.html" />
     <Content Include="SCM\templates\SCM\dashboard.html" />
-    <Content Include="SCM\templates\SCM\dublinbus.html" />
-    <Content Include="SCM\templates\SCM\event.html" />
+    <Content Include="SCM\templates\SCM\events.html" />
     <Content Include="SCM\templates\SCM\home.html" />
     <Content Include="SCM\templates\SCM\login.html" />
     <Content Include="SCM\templates\SCM\navbar.html" />

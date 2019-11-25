@@ -11,8 +11,10 @@ from SCM.views import (
 app_name = "SCM"
 urlpatterns = [
     path('home/', ValidateLoginView, name='validate-login'),
-    path('traffic/', DisplayMapView, name='display-map'),
-    path('pollution', DisplayPollutionData, name='display-pollution'),
-    path('dublinbus', DisplayDublinBusData, name='display-dublinbus'),
-    path('events', DisplayEventsData, name='display-events'),
+    path('traffic/', DisplayMapView, name='traffic-data'),
+    path('pollution/', DisplayPollutionData, name='pollution-data'),
+    path('DublinBus/', DisplayDublinBusData, name='bus-data'),
+    path('events/', DisplayEventsData, name='event-data')
+
+
 ]

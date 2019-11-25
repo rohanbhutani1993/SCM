@@ -1,0 +1,18 @@
+﻿{% extends 'base.html '%}
+{% block content %}
+    <table style="margin:10px">
+        <tr>
+            <th>Event Date and Time</th>
+            <th>Event Name</th>
+            <th>Event Location</th>
+        </tr>
+        {% for item in data %}
+            <tr>            
+                <td>{{item.start.local}}</td>
+                <td>{{item.name.text}}</td>
+                <td>{{item.address.address_1}}, {{item.address.city}}, {{item.address.country}} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
