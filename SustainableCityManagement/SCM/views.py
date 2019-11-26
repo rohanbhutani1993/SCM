@@ -74,16 +74,23 @@ def DisplayDublinBusData(request):
     return render(request,"BusRouteInfo.html",context)
 
 def DisplayEventsData(request):
-    city="dublin"
-    response = requests.get('https://www.eventbriteapi.com/v3/events/search/?location.address='+city+'&location.within=10km&expand=venue&token=NL3IVYPNAYASG6QYJSMF')
-    event=response.json()
-
+    
+    response = requests.get('https://app.ticketmaster.com/discovery/v2/events.json?countryCode=IE&apikey=u2MCIW0dPwxqAZMCssL2PrGWWfdkGedj')
+    events=response.json()
     dict1 = dict()
-    for i in range(0, len(events)):
-        dict1[event['events'][i]['id']] = {'name' : event['events'][i]['name']['text']}
-    abc = "jkewbhcjb"
+    for i in range(0 , len(events['_embedded']['events'])):
+        
+        dict1[events['_embedded']['events'][i]['id']] = {'name':events['_embedded']['events'][i]['name'],
+                                                        'dateTime': events['_embedded']['events'][i]['dates']['start']['localTime'] + " " + 
+                                                        events['_embedded']['events'][i]['dates']['start']['localDate'],
+                                                        'location': "Latitude - " + events['_embedded']['events'][i]['_embedded']['venues'][0]['location']['latitude'] + " " +
+                                                        "Longitude - " + events['_embedded']['events'][i]['_embedded']['venues'][0]['location']['longitude']
+                                                        
+                                                         }
+                                                        
+
     context = {
-        "data" : events['events']
+        "data" : dict1
         }
     return render(request,"events.html",context)
 

@@ -1,16 +1,20 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'dashboard.html' %}
+{% load static %}
+{% block static_file %}
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
+{% endblock %}
 {% block content %}
     <table style="margin:10px">
         <tr>
-            <th>Event Date and Time</th>
             <th>Event Name</th>
+            <th>Event Date and Time</th>            
             <th>Event Location</th>
         </tr>
-        {% for item in data %}
+        {% for key, value in data.items %}
             <tr>            
-                <td>{{item.start.local}}</td>
-                <td>{{item.name.text}}</td>
-                <td>{{item.address.address_1}}, {{item.address.city}}, {{item.address.country}} </td>
+                <td>{{value.name}}</td>
+                <td>{{value.dateTime}}</td>
+                <td>{{value.location}}</td>
             </tr>
         {% endfor %}
     </table>
