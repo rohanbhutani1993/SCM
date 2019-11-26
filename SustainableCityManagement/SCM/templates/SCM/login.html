@@ -1,12 +1,12 @@
 ﻿{% extends 'base.html' %}
 
 {% block content %}
-    <div class="row" style="margin-top:115px">
+    <div class="row" style="margin-top:115px; height:300px">
         <div class="col-4"></div>
-        <div class="col-4" style="border:2px solid black; background-color:lightgray">
+        <div class="col-4" style="border:2px solid black; background-color:white;" >
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col-4">
+                <div class="col-4" style="margin:20px 0 20px 0">
                     <h5>SCM Login</h5>
                 </div>
                 <div class="col-4"></div>
@@ -15,15 +15,13 @@
                 <div class="col-12">
                     <form method="post" action="{% url 'SCM:validate-login' %}">
                         {% csrf_token %}
-                        <div style="margin:5px;" class="form-group">
-                            <label for="">Username</label>
+                        <div style="margin:10px;" class="form-group">
                             {{form.userName}}
                         </div>
-                        <div style="margin:5px;" class="form-group">
-                            <label for="">Password</label>
+                        <div style="margin:10px;" class="form-group">
                             {{form.password}}
                         </div>
-                        <button class="btn btn-primary" style="margin:5px" name="btn_login">Sign in</button>            
+                        <button class="btn btn-primary" style="margin:10px; width:410px" name="btn_login">Sign in</button>            
                     </form>
                 </div>
             </div>
