@@ -132,13 +132,12 @@ def push_notify(request):
         'fcm': {
             'notification': {
                 'title': 'Notification from Dashboard!',
-                'body': 'Hello, World!'
+                'body': 'Notification from Dashboard!'
             }
         }
     }
     )
 
-    # print(response['publishId'])
     return HttpResponse('Notification Sent')
 
 
